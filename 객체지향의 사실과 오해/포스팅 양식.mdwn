@@ -1,0 +1,18 @@
+[개발자 책읽기] 객체지향의 사실과 오해-조영호 (n장 제목)
+
+> 해당 글은 조영호님의 **객체지향의 사실과 오해** _역할, 책임, 협력, 관점에서 본 객체지향_ 라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 객체지향의 사실과 오해](http://www.yes24.com/Product/Goods/18249021) 에서 확인해주세요.
+
+#### 객체지향의 사실과 오해 - 역할, 책임, 협력 관점에서 본 객체지향 (조영호)
+
+- 위키북스
+- 지은이: 조영호
+- 펴낸이: 박찬규, 엮은이: 이대엽, 디자인: 북누리
+- 1쇄 발행: 2015.06.17
+
+[##_Image|kage@brjUt4/btq1XL8f5Ec/j4jCTP2njlIi4U5WRS5FF0/img.png|alignCenter|data-origin-width="0" data-origin-height="0" width="334" height="NaN" data-ke-mobilestyle="widthContent"|||_##]
+
+---
+
+# 이번 장에서 이야기하고자 하는 것
+
+# 나의 해석과 회고

@@ -1,0 +1,95 @@
+[개발자 책읽기] 테스트 주도 개발 - 켄트 벡 (프라이버시)
+
+> 해당 글은 Kent-Beck의 **테스트 주도 개발** _By Example_ 이라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 테스트 주도 개발](http://m.yes24.com/goods/detail/12246033) 에서 확인해주세요.
+
+#### 테스트 주도 개발 - Test Driven Development By Example (Kent-Beck)
+
+- 인사이트(insight)
+- 지은이: Kent-Beck
+- 엮은이: 김창준, 강규역
+- 출간일: 2014.02.15
+
+[##_Image|kage@brjUt4/btq1XL8f5Ec/j4jCTP2njlIi4U5WRS5FF0/img.png|alignCenter|data-origin-width="0" data-origin-height="0" width="334" height="NaN" data-ke-mobilestyle="widthContent"|||_##]
+
+## 순서
+
+1. 테스트 하나 추가
+2. 모든 테스트를 실행해서 추가한 테스트가 **실패**하는지 확인
+3. 코드를 조금 수정
+4. 모든 테스트를 실행시켜서 추가한 테스트가 **성공**하는지 확인
+
+# TDD의 최종 목표
+
+Clean Code That Works
+작동하는 깔끔한 코드가 되는 것이 TDD의 궁극적 목표
+
+# 프라이버시
+
+지난 코드에서는
+equals 라는 메서드를 통해서 **동치성**을 통해서 times() 연산을 한 결과 객체와 Dollar 객체가 서로 논리적으로 같음을 증명했었다.
+
+지금까지의 코드를 점검해보자.
+
+```java
+
+public class Test {
+  public void testMultiplication() {
+    Dollar five = Dollar(5);
+    Dollar product = five.times(2);
+    assertEquals(10, product.amount);
+    product = five.times(3);
+    assertEquals(15, product.amount);
+  }
+}
+
+class Dollar {
+  int amount;
+  Dollar(int amount) {
+    this.amount = amount;
+  };
+  Dollar times(int multiplier){
+    return new Dollar(amount * multiplier);
+  }
+
+  public boolean equals(Object object) {
+    return amount == (Dollar) object;
+  }
+
+  @Test
+  public void testEquality() {
+    assertTrue(new Dollar(5).equals(new Dollar(5)));
+    assertFalse(new Dollar(5).equals(new Dollar(10)));
+  }
+}
+```
+
+하지만 우리의 `testMultiplication()` 메서드는 동치성을 테스트하고 있지 않다.
+
+우리가 테스트해야할 것은 **times()** 메서드는 새로운 Dollar 객체를 반환하는가?를 확인해야 한다.
+
+그래서 testMultiplication() 메서드에서 테스트 하는 내용을 바꿀 것이다.
+
+```java
+public void testMultiplication() {
+  Dollar five = Dollar(5);
+  assertEquals(new Dollar(10), five.times(2));
+  assertEquals(new Dollar(15), five.times(3));
+}
+```
+
+이렇게 된다면 현재 testMultiplication() 메서드는 우리가 원하는 테스트를 수행할 수 있게 된다.
+
+## private
+
+이제 코드를 보면 Dollar 클래스의 amount를 사용하는 곳은 클래스 내부밖에 없으니 변수를 private으로 설정하자.
+
+```java
+class Dollar {
+  private int amount;
+
+  Dollar(int amount) {
+    this.amount = amount;
+  };
+  // ... 생략
+}
+```

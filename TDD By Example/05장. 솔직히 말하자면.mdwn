@@ -1,0 +1,78 @@
+[개발자 책읽기] 테스트 주도 개발 - 켄트 벡 (솔직히 말하자면)
+
+> 해당 글은 Kent-Beck의 **테스트 주도 개발** _By Example_ 이라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 테스트 주도 개발](http://m.yes24.com/goods/detail/12246033) 에서 확인해주세요.
+
+#### 테스트 주도 개발 - Test Driven Development By Example (Kent-Beck)
+
+- 인사이트(insight)
+- 지은이: Kent-Beck
+- 엮은이: 김창준, 강규역
+- 출간일: 2014.02.15
+
+[##_Image|kage@brjUt4/btq1XL8f5Ec/j4jCTP2njlIi4U5WRS5FF0/img.png|alignCenter|data-origin-width="0" data-origin-height="0" width="334" height="NaN" data-ke-mobilestyle="widthContent"|||_##]
+
+# 솔직히 말하자면
+
+통화는 여러 개의 나라에서 사용할 수 있다.
+미국이면 Dollar, 프랑스면 Franc, 한국이면 Won
+이런 다양한 종류의 통화를 지원해보자
+
+## Dollar 복사
+
+우리는 다양한 통화를, Franc를 예로 지원한다고 했는데, 사실 생각해보면 Dollar나 Franc이나 돈이 하는 일은 다 똑같다.
+
+그래서 우리는 일단 Dollar가 하는 일을 그대로 복사 붙혀넣기할 것이다.
+
+```java
+class Dollar {
+  private int amount;
+
+  Dollar(int amount) {
+    this.amount = amount;
+  };
+  // ... 생략
+}
+
+class Franc {
+  private int amount;
+
+  Franc(int amount) {
+    this.amount = amount;
+  };
+  // ... 생략
+}
+```
+
+위의 코드는 복사 붙혀넣기라는 죄악을 저질렀다.
+하지만 이쯤에서 TDD 사이클에 대해서 다시 생각해보자.
+
+1. 테스트 작성
+2. 컴파일되게 하기
+3. 실패하는지 확인하기 위해 실행
+4. 실행되게 만듦
+5. 중복 제거 (리팩토링)
+
+**처음 네 단계는 빠르게**진행되어야 한다.
+
+## 테스트 작성과 컴파일 되게 하기
+
+이는 우리가 Dollar 클래스를 잘 작성해놨기 때문에 복사 붙혀넣기를 한다면 정확히 우리가 예상한 결과를 기대할 수 있다.
+
+이게 바로 TDD가 갖느 순기능중 하나이다.
+
+## 실패하는지 확인하기 위해 실행
+
+우리가 코드를 복붙했으니 아마 해당 코드는 실패할 것이다.
+왜? 클래스 네임이 중복되었으니.
+그럼 실패를 예상하고 실행하자.
+
+## 실행되게 만듦
+
+실패를 확인하고 이제 실행되게 만들면 된다.
+Dollar가 중복되었으니 Dollar를 Franc으로 바꿔주자.
+
+## 중복 제거
+
+켄트 벡은 1 ~ 4단계 까지를 최대한 빠른 시간안에 끝내라고 한다.
+
+우선 공용 equals를 만드는 것에서 부터 중복 제거를 실현해보자.

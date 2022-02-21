@@ -1,0 +1,23 @@
+> 이 글은 [GoF의 다자인 패턴 - 알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=379717)과 [Head First 디자인 패턴 - 알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=582754)를 참고하여 개념과 구조, 활용을 알아보고 더욱 실용적인 예제를 구현하려 노력하였습니다.
+> 26가지의 패턴에 대한 내용은 아래의 목차를 살펴주세요
+
+### 목차
+
+- [디자인 패턴이란?]()
+- [생성 패턴]()
+  - [Abstract Factory 패턴]() - 추상 팩토리
+  - [Factory Method 패턴]() - 팩토리 메서드
+  - [Builder 패턴]() - 빌더
+  - [Singleton 패턴]() - 싱글톤
+- [구현 패턴]()
+  - [Abdaptor 패턴]() - 어댑터
+  - [Bridge 패턴]() - 브리지, 가교
+  - [Composite 패턴]() - 컴포지트
+  - [Decorator 패턴]() - 데코레이터, 장식자
+  - [Facade 패턴]() - 퍼사드
+  - [Proxy 패턴]() - 프록시
+- [행동 패턴]()
+  - [Chain Of Responsibility 패턴]() - 책임 연쇄
+  - [Command 패턴]() - 명령
+  - [Interperter 패턴]() - 해석자
+  - [Iterator 패턴]() - 반복자

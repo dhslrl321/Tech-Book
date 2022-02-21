@@ -1,0 +1,337 @@
+> 해당 글은 조영호님의 **객체지향의 사실과 오해** _역할, 책임, 협력, 관점에서 본 객체지향_ 라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 객체지향의 사실과 오해](http://www.yes24.com/Product/Goods/18249021) 에서 확인해주세요.
+
+#### 객체지향의 사실과 오해 - 역할, 책임, 협력 관점에서 본 객체지향 (조영호)
+
+- 위키북스
+- 지은이: 조영호
+- 펴낸이: 박찬규, 엮은이: 이대엽, 디자인: 북누리
+- 1쇄 발행: 2015.06.17
+
+[##_Image|kage@JI35T/btq2hs9jcVC/8JZnBcC73BwFAPeJRKfqkk/img.png|alignCenter|data-origin-width="0" data-origin-height="0" width="334" height="NaN" data-ke-mobilestyle="widthContent"|||_##]
+
+---
+
+# 이번 장에서 이야기하고자 하는 것
+
+#### 이번 장은 지금까지 배운 내용의 이론들을 실제로 객체지향 설계에 적용하는 것이 목적이다. 요약보다는 아래의 실습 코드를 통해서 정리를 대체하겠다.
+
+- **함께 모으기**
+  - 마틴 파울러는 객체지향 설계 안에 존재하는 3가지 관점에 대해서 설명
+    1.  개념 관점
+    2.  명세 관섬
+    3.  구현 관점
+- **커뮤니케이션 다이어그램**
+  - UML 은 객체지향 설계의 도구가 아니다.
+  - 도메인 모델링과 커뮤니케이션 다이어그램을 활용하라
+    - 도메인 모델링에서 **포함관계와 연관관계는 중요하지 않다**
+      - 초점은 어떤 타입이 어떤 도메인을 구성하느냐와 타입들 사이의 관계가 어떤 관계인지 규명하는 것이다.
+      - 도메일 모델링에서는 단지 **관계가 존재하는지만 파악하는 것으로 충분하다.**
+      - 또한 현실 세계의 능동성과 수동성은 중요하지 않다.
+        - 객체지향에서는 모든 객체가 스스로 사고하고 선택하는 자율적인 존재이다.
+        - 이게 힘들면 의인화를 해라
+  - 커뮤니케이션 다이어그램
+    - 커뮤니케이션 다이어그램은 메시지의 방향과 주고받는 데이터를 더 쉽게 표현하는 것이다.
+    - 커뮤니케이션 다이어그램에서 나온 메시지를 토대로 **인터페이스를 작성한다.**
+- **도메인 개념을 참조하라**
+  - 현실 세계의 소프트웨어는 항상 변한다.
+  - 도메인 모델은, 즉 테이블 모델은 변화에 아주 민첩하다.
+  - 결국 우리는 도메인 모델을 따라서 객체를 설계해야 변화에 민첩하게 대처할 수 있게 된다.
+- **이번 장은 실습이 대부분이므로 아래의 실습으로 요약을 대체**
+  - 도메인 모델링
+
+# 나의 해석과 회고
+
+이번 장은 아마 가장 중요한 장이 되지 않을까 생각한다.
+
+지금까지 배운 모든 개념을 이용해서 **실제로 객체지향적인 설계**를 하는 부분이기 떄문이다.
+
+책에서는 1장에서 보았던 **커피가게**를 모델링하지만 나는 조금 바꿔서 Wargame 사이트를 설계하려 한다.
+
+> wargame 이란? 모의 해킹을 해볼 수 있는 체험형 해킹 게임으로 여러 분야(웹 해킹, 모바일 해킹, 시스템 해킹, 리버싱, 포렌식) 등이 있다.
+> 문제를 푸는 사용자는 해당 문제를 다운로드 (웹이라면 url 접속)한 뒤 문제 속에 있는 flag 값을 찾고 점수를 얻는 방식이다.
+> CTF 대회의 기본 문제 풀이 개념으로 유명한 사이트로는 [dreamhack.io](https://dreamhack.io), [webhacking.kr](https://webhacking.kr) 등이 있고 유명한 대회로는 [Defcon](https://ko.wikipedia.org/wiki/데프_콘), [Codegate](http://codegate.org), [LineCTF](https://linectf.me) 등이 있다.
+
+## 도메인
+
+백준을 모델링한 도메인 모델의 참여 도메인은 다음과 같다.
+
+- `User`.class
+  - 문제를 해결할 사용자
+- `Problem`.class
+  - 사용자가 풀어야할 문제
+- `ProblemList`.class
+  - 사용자가 풀어야할 문제들
+- `Scoring`.class
+  - 정답을 채점할 채점자
+
+이를 도메인으로 표현하면 다음과 같다.
+
+[##_Image|kage@RTxwx/btq2idQ4A8z/2vLYQrYuFbbeSXsIdnFfYk/img.png|alignCenter|data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent"|||_##]
+
+> 만약 실제로 그려보고 싶은 사람들은 [draw.io](https://draw.io) 에서 실제로 도메인 모델을 웹 브라우저에서 그릴수 있다.
+
+## 책임 찾아보기
+
+이제 도메인 즉, 역할과 책임 그리고 협력을 수행할 대상들이 정해졌으니 지금까지 계속 배운 **협력**의 관점에서 각각의 책임을 정의해보자.
+
+- `User`.class
+  - 문제를 해결할 사용자
+    - 문제 목록에서 문제를 받아 문제를 풀이한다.
+      - **문제를 요청하는 책임**
+    - 풀이를 제출한다.
+      - **문제 풀이를 요청하는 책임**
+- `ProblemList`.class
+  - 사용자가 풀어야할 문제들
+    - 사용자가 문제 풀이 요청을 한다면 풀이를 원하는 문제를 반환해야 한다.
+      - **사용자가 요청하는 특정 문제를 반환하는 책임**
+- `Problem`.class
+  - 사용자가 풀어야할 문제
+    - 문제의 정답과 점수를 채점자에게 제공한다.
+      - **문제 정답과 점수를 제공하는 책임**
+- `Scoring`.class
+  - 정답을 채점할 채점자
+    - 문제에게 정답을 요청하여 정답 값을 비교하고 결과를 사용자에게 반환한다.
+      - **사용자에게 문제를 받고 flag 값을 검증하고 점수를 데이터베이스에 저장하는 책임**
+
+그럼 책임에 대한 메시지의 흐름은 다음과 같을 것이다.
+
+[##_Image|kage@bmn5ar/btq2hrJjIFQ/bylFkN8PHQfv2TS6o5dYTk/img.png|alignCenter|width="610" height="NaN" data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent"|||_##]
+
+#### 잘 생각해보자. 우리는 지금 **행동을 먼저 생각**하고 있다. 사용자에게 문제를 해결하기 위해서 어떤 상태를 가져야 하고 어떤 값들이 필요한지는 아직 생각하지 않았다. 이렇게 행동을 먼저 생각하는게 객체지향 설계의 시작이다.
+
+~**채점을 요청하라에 엔티티는 User 가 아니라 Scoring 입니다.. 저장하지 않고 꺼서 수정이 불가한 점 양해바랍니다 ㅠㅠ**~
+
+## 행동 찾아보기
+
+이제 역할과 책임에 대해서 알아보았으니 우리가 원하는 목적을 달성하기 위한 행동을 찾아서 그려보자.
+
+[##_Image|kage@QCYoi/btq2kr2oyhz/2iTXxmGWaBbOk8RsJUQPk1/img.png|alignCenter|data-origin-width="0" data-origin-height="0" data-ke-mobilestyle="widthContent"|||_##]
+
+~**채점을 요청하라에 엔티티는 User 가 아니라 Scoring 입니다.. 저장하지 않고 꺼서 수정이 불가한 점 양해바랍니다 ㅠㅠ**~
+
+이와 같이 될 것이다.
+
+## 다른 객체와 협력할 인터페이스 정의하기
+
+행동을 정의했으니 **밖에서 보여질 인터페이스**를 구현해보자.
+
+- `User`.class
+  - 문제를 해결할 사용자
+    - 문제 목록에서 문제를 받아 문제를 풀이한다.
+      - `void solve(int problemId, ProblemList problemList)`.method
+    - 풀이를 제출한다.
+      - `void scoring(String flag)`.method
+- `ProblemList`.class
+  - 사용자가 풀어야할 문제들
+    - 사용자가 문제 풀이 요청을 한다면 풀이를 원하는 문제를 반환해야 한다.
+      - `Problem choose(int problemId)`.method
+- `Problem`.class
+  - 사용자가 풀어야할 문제
+    - 문제의 정답과 점수를 채점자에게 제공한다.
+      - `String getPoint()`.method
+        - `String getFlag()`.method
+- `Scoring`.class
+  - 정답을 채점할 채점자
+    - 문제에게 정답을 요청하여 정답 값을 비교하고 결과를 사용자에게 반환한다.
+      - `void validateFlag(int userId, Problem problem, userFlag`.method
+
+여기서 말 하는 인터페이스란 java의 interface 가 아닌 점을 유의하자.
+여기서 말 하는 인터페이스는 객체지향 설계에서 외부 객체에게 보여지기 위한 접점, java 에서 public 접근자로 지정된 메서드를 뜻한다.
+
+```java
+
+public class User {
+    // 문제 정보를 요청하라
+    public void solve(){ }
+
+    // 정답을 요청하라, 정답을 flag 라고 함
+    public void scoring() { }
+}
+
+public class Scoring {
+    // 문제에게 정답 값(플래그 값)를 요청 후 검증
+    public boolean validateFlag() { return false; }
+}
+
+public class ProblemList {
+    // 문제를 선택하고 반환하라
+    Problem choose(int problemId) {
+        return null;
+    }
+}
+
+public class Problem {}
+```
+
+사실 우리는 객체지향 설계의 궁극적 목표는 **서비스 제공**이다.
+
+서비스를 제공하기 위해서는 필연적으로 DB가 필요한데, 아래의 `DBConnection` 클래스가 DB와 관련된 작업들을 수행한다고 **가정하자**.
+
+```java
+public class DBConnection {
+
+    public void findUserById(int id) {
+        System.out.println("성공적으로 DB 에서 사용자를 검색하였습니다.");
+    }
+    public void save(){
+        System.out.println("데이터가 DB에 성공적으로 저장되었습니다.");
+    }
+}
+```
+
+이제 객체가 자율성을 갖고 역할을 제대로 완수하게 도와줄 내부 협력자들을 구현해보자!
+
+## 구현하기
+
+지금 까지 **상태**에 해당하는 field 를 하나도 넣지 않았다.
+
+이제 어떤 field가 필요할지 **행동을 토대로 적절히 만들어 넣어주자**.
+
+#### User
+
+```java
+public class User {
+
+    private int id;
+    private String name;
+    private Problem solvingProblem;
+
+    // 문제 정보를 요청하라
+    public void solve(int problemId, ProblemList problemList){
+        solvingProblem = problemList.choose(problemId);
+    }
+
+    // 정답을 요청하라, 정답을 flag 라고 함
+    public void scoring(String flag) {
+
+        DBConnection dbConnection = new DBConnection();
+
+        Scoring scoring = new Scoring();
+
+        scoring.validateFlag(this.id, solvingProblem, flag);
+    }
+}
+```
+
+핵심은 solve 메서드와 scoring 메서드이다.
+
+이 두 메서드에서 각각 Scoring 객체와 ProblemList 객체 사이에 어떻게 협력하는지 구현하자.
+
+### Problem
+
+```java
+public class Problem {
+    private int id;
+    private String title;
+    private String content;
+    private String flag;
+    private int point;
+
+    public Problem(int id, String title, String content, String flag, int point) {
+        // 생성자 세부 내용 생략 AllargConstructor
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+}
+```
+
+#### ProblemList
+
+```java
+public class ProblemList {
+
+    private List<Problem> problemList;
+
+    public ProblemList(List<Problem> problemList) {
+        this.problemList = problemList;
+    }
+
+    // 문제를 선택하고 반환하라
+    Problem choose(int problemId) {
+        for(Problem each : problemList) {
+            if(each.getId() == problemId) {
+                return each;
+            }
+        }
+        return null;
+    }
+}
+```
+
+#### Scoring
+
+```java
+public class Scoring {
+
+    // 문제에게 정답 값(플래그 값)를 요청 후 검증
+    public void validateFlag(int userId, Problem problem, String userFlag) {
+        DBConnection dbConnection = new DBConnection();
+
+        dbConnection.findUserById(userId);
+
+        if(problem.getFlag().equals(userFlag)){
+            dbConnection.save();
+            System.out.println("정답입니다! 성공적으로 " + problem.getPoint() + " Point 만큼의 점수가 저장되었습니다.");
+        } else {
+            System.out.println("오답입니다. 다시 시도해주세요");
+        }
+    }
+}
+```
+
+# 우리가 설계한 객체지향 서비스를 사용해보자.
+
+위에서 설계한 우리의 서비스를 이제 이용해보자.
+
+#### Main
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        List<Problem> problems = new ArrayList<>();
+        problems.add(new Problem(1,
+                "취약한 게시판",
+                "해당 게시판은 어떠한 보안 취약점이 존재합니다. 해당 게시판을 이용하여 내부 서버로 들어가서 SSRF 를 수행하여 플래그 값을 찾으세요.",
+                "CTF{142A-ECH}",
+                100));
+
+        problems.add(new Problem(2,
+                "이상한 사진",
+                "어제 원익이는 무료 사진 사이트에서 사진 하나를 다운받았습니다. 하지만 다음날 일어나보니 컴퓨터에 모든 파일이 잠겼습니다. 해당 파일을 분석하고 flag 값을 찾으세요",
+                "CTF{778Q-ADE}",
+                150));
+
+        problems.add(new Problem(3,
+                "근무 시간 찾기",
+                "범죄자의 휴대폰을 압수했습니다. 범죄자가 근무한 시간에 범죄가 일어났는데, 범죄자는 발뺌하고 있습니다. 범죄자의 휴대폰을 포렌식하여 Flag 값을 찾으세요",
+                "CTF{2341-BCD}",
+                50));
+
+        ProblemList problemList = new ProblemList(problems);
+
+        User user = new User();
+
+        // 정답일 경우
+        System.out.println("-------------구분선-------------");
+        user.solve(1, problemList);
+        user.scoring("CTF{1A-EH}"); // 오답 플래그 입력
+
+        // 오답일 경우
+        System.out.println("-------------구분선-------------");
+        user.solve(3, problemList);
+        user.scoring("CTF{2341-BCD}"); // 정답 플래그 입력
+    }
+}
+```
+
+---

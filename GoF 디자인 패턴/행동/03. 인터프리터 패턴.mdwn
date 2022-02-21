@@ -1,0 +1,52 @@
+# 인터프리터 패턴
+
+> 문법 규칙을 클래스화 한 구조로, 일련의 규칙으로 정의된 문법적 언어를 해석하는 패턴 (SQL, Shell)
+> SQL 과 같은 계층적 언어를 해석하기 위해서 계층 구조를 표현할 수 있음
+
+- 데이터를 주고/받을 때 데이터의 패턴(문법)을 객체화 하여 언어를 해석함
+- 가장 좋은 예시는 자바 코드를 JVM 이 이해할 수 있도록 바이트 코드로 변경하는 자바 컴파일러
+  - 구글 번역기도 마찬가지
+
+# 등장 배경
+
+# 참여 객체
+
+- Context
+  - 문장을 저장하고 관리하는 클래스
+  - 해석 작업을 위한 interpreter 컨텍스트
+- Abstract Expression
+  - 문장을 해석하기 위한 해석자 인터페이스
+- Terminal Expression
+  - 문장의 종료를 나타내는 인터프리터 구현체
+- Non-Terminal Expression
+  - 문장의 비종료를 나타내는 인터프리터 구현체
+- Client
+
+# 예시
+
+- 비행기에서 기내 방송을 각국의 언어로 하는 상황
+- Context
+  - `InFlightBroadCast`
+- Abstract Expression
+  - `Expression`
+  - `KoreanExpression`
+  - `EnglishExpression`
+  - `FrenchExpression`
+- Client
+  - `BroadcastClient`
+
+# 장점과 단점
+
+### 장점
+
+- 간단한 파서를 만들 때 용이함
+
+### 단점
+
+- 간단할 때만 빠르게 구현하기 좋아서 복잡해지면 다른 파서를 이용하는게 나음
+- Expression 클래스들이 많아지게되면 유지보수가 어려워 지게됨
+
+# 만약 패턴을 사용하지 않는다면?
+
+- 패턴을 사용하지 않을 떄의 복잡성을 보여줌
+- 그리고 이 복잡성을 어떻게 패턴으로 끄집어 내는지 보여줌

@@ -1,0 +1,115 @@
+[개발자 책읽기] 테스트 주도 개발 - 켄트 벡 (화폐 예제)
+
+> 해당 글은 Kent-Beck의 **테스트 주도 개발** _By Example_ 이라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 테스트 주도 개발](http://m.yes24.com/goods/detail/12246033) 에서 확인해주세요.
+
+#### 테스트 주도 개발 - Test Driven Development By Example (Kent-Beck)
+
+- 인사이트(insight)
+- 지은이: Kent-Beck
+- 엮은이: 김창준, 강규역
+- 출간일: 2014.02.15
+
+[##_Image|kage@brjUt4/btq1XL8f5Ec/j4jCTP2njlIi4U5WRS5FF0/img.png|alignCenter|data-origin-width="0" data-origin-height="0" width="334" height="NaN" data-ke-mobilestyle="widthContent"|||_##]
+
+# TDD 시작
+
+- Red 사이클
+- Green 사이클
+- 중복 제거(리팩토링 사이틀)
+
+# TDD 순서
+
+1. 빨강 : 실패하는 작은 테스트
+2. 초록 : 테스트가 통과하는 단계, 이를 위해서 아주 비효율적이고 쓰래기같은 코드를 만들어도 된다.
+3. 리팩토링 : 초록 단계에서 테스트가 통과하게 하기위해 생산해냈던 쓰래기들을 줍고 중복들을 제거하는 등 이쁜 코드를 작성
+
+# Red 사이클
+
+```java
+public void testMultiplication() {
+    Dollar five = Dollar(5);
+    five.times(2);
+    assertEquals(10, five.amount);
+}
+```
+
+를 만들자.
+
+그럼 오류가 난다.
+컴파일 조차 안된다.
+우리는 Green 사이클로 가기 위해서 우선 컴파일이 되게 해야한다.
+
+#### Red 단계에서는 가장 우선적으로 어떻게 하면 테스트를 통과할 수 있을까를 생각하는 것이다.
+
+#### 그냥 일단 실행만 되면 된다. 좋은 코드를 짜려고 힘쓰지 말자
+
+그러기 위해서 필요한 4가지 조건
+
+1. Dollar 클래스 생성
+2. Dollar 클래스에 생성자 추가
+3. times 메서드 생성
+4. amount 필드 생성
+
+이제 저 4가지 것들을 수행해서 빨리 Red 사이클을 벗어나자.
+
+# Green 사이클
+
+앞서 봤던 4가지 것들을 차례대로 수행하면 다음과 같이 된다.
+
+```java
+public class Test {
+  public void testMultiplication() {
+    Test five = Dollar(5);
+    five.times(2);
+    assertEquals(10, five.amount);
+  }
+}
+
+class Dollar {
+  int amount;
+  Dollar(int amount) { }
+  void times(int multiplier){}
+}
+```
+
+이렇게 하면 우선 급한 불은 껐다.
+
+하지만 Junit의 AssertEquals가 기대하는 값은 10인데, 우리는 `int amount`에 대해서 아무 값도 넣어주지 않았으므로 실패한다.
+
+여기서도 성공하기 위한 **쓰래기를 집어 넣으면**
+
+```java
+class Dollar {
+    int amount = 10;
+    Dollar(int amount) {};
+    void times(int multiplier){}
+}
+```
+
+다음과 같은 코드는 결국 동작하는 코드가 된다.
+
+이제 Red 사이클을 벗어난 것
+
+# 중복 제거
+
+중복이라 함은 실제로 코드가 중복되는 경우도 존재하지만, 논리적인 중복도 존재한다.
+
+여기서는 10이다.
+
+새롭게 계속 클래스 변수를 추가해도 쟤는 10이라는 수가 중복될 것이다.
+
+중복을 제거하기 위해서 amount가 어떻게 10이라는 수가 되었는지 생각해보자.
+
+- amount \* times;
+
+```java
+class Dollar {
+  int amount;
+  Dollar(int amount) {
+    this.amount = amount;
+  };
+  void times(int multiplier){
+    amount *= multiplier
+  }
+}
+```

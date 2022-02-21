@@ -1,0 +1,17 @@
+[개발자 책읽기] 클린 코드-로버트 C. 마틴 (n장 제목)
+
+> 해당 글은 Robert C.Martin **클린 코드** 라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 객체지향의 사실과 오해](http://www.yes24.com/Product/Goods/11681152) 에서 확인해주세요.
+
+#### **클린 코드** - 애자일 소프트웨어 장인 정신 (Uncle Bob)
+
+- 위키북스
+- 지은이: Robert C.Martin (Uncle Bob)
+- 옮긴이: 박재호, 이해영
+
+[##_Image|kage@b9ygf9/btrr9gXuJLT/c0H8kDAQIeYzVNO0yolpn1/img.png|CDM|1.3|{"originWidth":1440,"originHeight":1440,"style":"alignCenter","width":468,"height":468}_##]
+
+---
+
+# 이번 장에서 이야기하고자 하는 것
+
+# 나의 해석과 회고

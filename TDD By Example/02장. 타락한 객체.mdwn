@@ -1,0 +1,46 @@
+[개발자 책읽기] 테스트 주도 개발 - 켄트 벡 (타락한 객체)
+
+> 해당 글은 Kent-Beck의 **테스트 주도 개발** _By Example_ 이라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 테스트 주도 개발](http://m.yes24.com/goods/detail/12246033) 에서 확인해주세요.
+
+#### 테스트 주도 개발 - Test Driven Development By Example (Kent-Beck)
+
+- 인사이트(insight)
+- 지은이: Kent-Beck
+- 엮은이: 김창준, 강규역
+- 출간일: 2014.02.15
+
+[##_Image|kage@brjUt4/btq1XL8f5Ec/j4jCTP2njlIi4U5WRS5FF0/img.png|alignCenter|data-origin-width="0" data-origin-height="0" width="334" height="NaN" data-ke-mobilestyle="widthContent"|||_##]
+
+# 2장 타락한 객체
+
+- TDD 최종 목표
+  - 분할 정복
+- Green 사이클로 가기 위한 빠른 방법
+  - 상수 사용하기
+  - 명백한 구현 사용하기
+- 코드의 부작용 생각하기
+
+# TDD 최종 목표
+
+TDD 의 최종 목표는 **Clean Code That Works** 이다.
+일반적인 프로그래머들은 Clean Code That Works를 한 번에 수행하는 것은 사실상 불가능하므로 Clean Code와 Code That Works를 서로 나눠서 생각하자는 것이다.
+이는 우리가 흔히 아는 **분할 정복**의 기법이다.
+
+# Green 사이클로 가기 위한 빠른 방법
+
+1. 상수 사용하기
+2. 명백한 구현 사용하기
+
+우리가 Red 사이클에서 구현을 하다가 재빠르게 Green으로 넘어가야 할 때, 우리는 3개의 방법을 사용할 수 있다.
+3번째는 담에 설명하고 첫 번째는 앞서 했던 것 처럼 상수를 사용해서 일단 통과되게 하는 것.
+두 번째는 내가 충분히 해당 로직을 핸들링할 수 있다면 구현하고 통과되게 하자.
+근데 그게 힘들다면 상수를 사용해서 하자.
+켄트 벡도 2개를 번갈아가며 사용한다고 한다
+
+# 코드의 부작용 생각하기
+
+이번 장에서는 Dollor가 부작용을 발생시키는 것을 예측하고 이를 리팩토링 하였다.
+이런 과정이 잦아질 수록 실제 설계에서 위협 요인을 인지하는 데에 도움이 된다.
+Dollor의 부작용은 한 번 값이 세팅된다면 예를 들어 `Dollar five = new Dollar(5)`와 같이.
+해당 객체의 `amount = 5`로 고정이 된다.
+그리고 `times()` 메서드를 통해서 amount의 값을 갱신하는데, 메서드 내부에서 `amount *= times` 로 수정하기 때문에 최초에 5라고 지정한 five 객체는 최초에 5라는 수를 넣었던 완결한 객체가 아니다.

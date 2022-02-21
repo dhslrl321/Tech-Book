@@ -1,0 +1,73 @@
+# 데커레이터 패턴
+
+> 객체에 동적으로 새로운 책임을 추가할 수 있게 한다.
+> 기능을 추가할 때, 서브클래스를 생성하는 것보다 더욱 융통성이 있다.
+
+- 테두리를 추가하는 다른 객체에 해당 객체를 둘러싸는 방식
+- 데커레이터는 자신이 감싸는 객체가 갖는 인터페이스를 자신도 동일하게 제공함
+  - 데커레이터의 존재는 사용자에게 감춰짐
+- 자신이 둘러싼 객체로 전달되는 요청을 중간에 가로채서 해당 객체로 전달함.
+- 동적으로 객체의 책임을 부여하거나 제거할 수 있음
+
+# 등장 배경
+
+- 전체 클래스에 새로운 기능을 추가할 필요는 없지만, 개별적인 객체에 새로운 책임을 추가해야할 때
+  - 상속을 이용: `TextView` 에서 `Scroll` 을 지원해야 하는 경우 Scroll 을 상속받은 `ScrollTextView` 라는 서브클래스 생성
+  - 데커레이터를 이용: `ScrollDecorator` 라는 객체에 `TextView` 를 넣으면 됨
+- 만약 상속을 이용한다면 `TextView` `Image` `MenuList`과 같은 컴포넌트 에 대한 각각의 `ScrolledTextView`, `ScrolledImage`, `ScrolledMenuList` 을 생성해야 함
+- 하지만 데커레이터를 이용한다면 `ScrollDecorator`의 매개변수로 컴포넌트를 넣어서 감싼다면 각각의 컴포넌트가 서브클래스를 만들지 않고도 우리가 원하는 기능을 수행할 수 있음
+
+# 참여 객체
+
+- Component
+  - 동적으로 추가될 책임을 가질 가능성이 있는 객체들
+  - 기본 기능(ConcreteComponent)와 추가 기능(Decorator) 의 공통 기능을 정의
+- ConcreteComponent
+  - 기본적인 기능이 구현되어 있는 객체
+  - Component 의 실제 구현
+- Decorator
+  - Decorator 의 공통 기능을 정의
+- ConcreteDecorator
+  - 새롭게 추가할 책임을 실제로 구현하는 클래스
+  - Component 객체에 대한 참조가 필요함
+    - 합성 관계로 표현
+
+# 예시
+
+- 비행기 표 예메 과정에 단계적으로 옵션을 추가
+- 토탈 금액을 산출
+- 비행기 티켓을 구매하는 과정에 데코레이터를 추가
+  1. 비행기 티켓 구매
+  2. 좌석 선택 (일반, 비즈니스, 퍼스트클래스)
+  3. 기내식 종류 선택 (기본형, 고급형)
+- Component
+  - `TicketOption`
+- ConcreteComponent
+  - `FirstClass`
+  - `EconimiyClass`
+- Decorator
+  - `InFlightOptionDecorator`
+- ConcreteDecorator
+  - `InFlightMealDecorator`
+    - `GeneralMeal`
+    - `MuslimMeal`
+  - `SeatDecorator`
+    - `WindowSeat`
+    - `AisleSeat`
+
+# 장점과 단점
+
+### 장점
+
+- 설계의 융통성을 제공한다.
+  - 상속으로 서브클래스를 계속 만드는 방법보다 훨씬 효율적이다.
+- 설계의
+
+### 단점
+
+- 서브클래스를 사용하지 않기 때문에 작은 객체들이 많아지면 객체를 관리하기가 어려워질 수 있다.
+
+# 만약 패턴을 사용하지 않는다면?
+
+- 패턴을 사용하지 않을 떄의 복잡성을 보여줌
+- 그리고 이 복잡성을 어떻게 패턴으로 끄집어 내는지 보여줌
