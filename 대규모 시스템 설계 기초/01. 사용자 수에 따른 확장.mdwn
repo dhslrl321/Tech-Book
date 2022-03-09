@@ -57,6 +57,7 @@ keyword : `데이터베이스`, `Scale-Up`, `Scale-Out`, `Load Balancer`
 # 로드밸런서
 
 - **정의**
+  - 웹 계층의 안정적 설계
   - Load balancing Set 에 속한 웹 서버들에게 트래픽 부하를 고르게 분산하는 역할
   - 단일 End-Point 를 제공하고 내부적인 규칙에 따라서 실제 웹서버로 분산시켜주는 역할
 - **내부 통신 구현**
