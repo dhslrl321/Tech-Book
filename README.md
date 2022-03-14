@@ -19,11 +19,17 @@
 - `2021.03 ~`
 - 테스트 주도 개발 (켄트 벡) - [블로그 포스팅 바로가기](https://wonit.tistory.com/category/📗%20개발자%20책%20읽기/-%20테스트%20주도%20개발)
 
+<br>
+<br>
+
 ## GoF 의 디자인 패턴
 
 - `2021.04 ~`
 - GoF 의 디자인 패턴 (Gang of four) - [블로그 포스팅 바로가기](https://wonit.tistory.com/category/📗%20개발자%20책%20읽기/-%20GoF%20의%20디자인%20패턴)
 - 실습 소스코드 [Repository 바로가기](https://github.com/dhslrl321/gof-design-pattern)
+
+<br />
+<br />
 
 ## 대규모 시스템 설계 기초
 
