@@ -52,6 +52,6 @@
 ## 컴퓨터 네트워킹 하양식 접근
 
 - `2022.03 ~`
-- 컴퓨터 네트워킹 하양식 접근 - (James F. Kurose, Keith W. Ross) - [정리 저장소 바로가기](#)
+- 컴퓨터 네트워킹 하양식 접근 - (James F. Kurose, Keith W. Ross) - [정리 저장소 바로가기](https://github.com/dhslrl321/Tech-Book/tree/master/컴퓨터%20네트워킹%20하양식%20접근)
 
 <br />
