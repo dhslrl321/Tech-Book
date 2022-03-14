@@ -1,7 +1,35 @@
 # 인터넷이란 무엇인가
 
-키워드 : `title`
+키워드 : `internet`
 
 ### 목차
 
-# 소제목
+- 인터넷이란
+
+# 구성 요소로서의 인터넷
+
+- Computing 장치를 연결하는 네트워크
+  - Computing 장치 : 컴퓨터, 스마트폰, IoT 기기 등등
+- Computing 장치는 Host or End-System 이라고 부름
+- End System
+  - 종단 시스템은 ISP (Internet-Service-Provider) 에 의해서 서로 연결됨
+    - 가정 ISP, 법인 ISP, 대학 ISP
+    - 국가 ISP 로 ISP 간의 연결 (KT, AT&T, IBM)
+  - 통신 링크 (Commnuication Link) + 패킷 스위치 (Packet Switch)
+  - Communication Link : 두 지점을 연결하는 전송 경로
+  - Packet Switch : 입력 통신 링크 (Input Communication Link) 에서 출력 통신 링크 (Output Communication Link) 로 데이터 전달
+    - 종류
+      1. Router
+      2. Link-Layer Switch
+- 전송
+  - 각 End-System 간의 통신에서는 데이터를 Segment 로 나눔
+  - Segment + Header : Packet
+  - 패킷을 전송
+- 수신
+  - Segment 에 Header 를 붙히면 Packet 이 됨
+  - 다시 조립 후 데이터로 원복하여 사용
+- TCP 와 IP 는 인터넷에서 가장 중요한 프로토콜
+
+# 서비스 측면에서의 인터넷
+
+-
