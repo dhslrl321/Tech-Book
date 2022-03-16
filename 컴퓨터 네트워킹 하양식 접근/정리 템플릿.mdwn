@@ -5,3 +5,12 @@
 ### 목차
 
 # 소제목
+
+# ㅖ
+
+- RefundExecution 과 Payments 는 서로 의존하면 안된다.
+- refundHistories.isEmpty() 를 쓴건 데이터적인 접근
+- 캡슐화가 되어있지 않다
+- IntStream... 은 Payments 에 들어갈 수 있는 부분이다
+- RC는 Payments 에게 어떻게 협력하는지 전혀 모르겠다
+- Payments 한테 나 지금 얼마 amount 줄건데 너가 refund 가능한 금액을 줘
