@@ -11,6 +11,7 @@
 5. 대규모 시스템 설계 기초
 6. IT 엔지이너를 위한 네트워크 입문
 7. 운영체제
+8. 자바 ORM 표준 JPA 프로그래밍
 
 <br />
 
@@ -60,6 +61,16 @@
 ## 📌 운영체제 개정판
 
 - `2021.11 ~ 2021.12`
+- 운영체제 개정판 - (구현회) - [정리 저장소 바로가기](https://github.com/dhslrl321/Tech-Book/tree/master/운영체제)
+
+<br />
+
+<br />
+
+## 📌 자바 ORM 표준 JPA 프로그래밍
+
+- `2021.06 ~`
 - 운영체제 개정판 - (구현회) - [정리 저장소 바로가기](#)
+- 실습 소스코드 [Repository 바로가기](https://github.com/my-research/java-persist-api)
 
 <br />
