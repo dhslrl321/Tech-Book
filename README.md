@@ -52,6 +52,11 @@
 ## IT 엔지니어를 위한 네트워크 입문
 
 - `2022.03 ~`
-- 컴퓨터 네트워킹 하양식 접근 - (James F. Kurose, Keith W. Ross) - [정리 저장소 바로가기](https://github.com/dhslrl321/Tech-Book/tree/master/컴퓨터%20네트워킹%20하양식%20접근)
+- 컴퓨터 네트워킹 하양식 접근 - (James F. Kurose, Keith W. Ross) - [정리 저장소 바로가기](https://github.com/dhslrl321/Tech-Book/tree/master/IT%20엔지니어를%20위한%20네트워크%20입문)
+
+## 운영체제 개정판
+
+- `2021.11 ~ 2021.12`
+- 운영체제 개정판 - (구현회) - [정리 저장소 바로가기](#)
 
 <br />
