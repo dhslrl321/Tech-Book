@@ -63,7 +63,6 @@
 - `2021.11 ~ 2021.12`
 - 운영체제 개정판 - (구현회) - [정리 저장소 바로가기](https://github.com/dhslrl321/Tech-Book/tree/master/운영체제)
 
-<br />
 
 <br />
 
