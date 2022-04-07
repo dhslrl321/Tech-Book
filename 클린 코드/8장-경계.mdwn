@@ -1,0 +1,102 @@
+[개발자 책읽기] 클린 코드-애자일 소프트웨어 장인 정신 (8장 경계)
+
+> 해당 글은 Robert C.Martin **클린 코드** 라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 클린 코드 - 애자일 소프트웨어 장인 정신](http://www.yes24.com/Product/Goods/11681152) 에서 확인해주세요.
+
+#### **클린 코드** - 애자일 소프트웨어 장인 정신 (Uncle Bob)
+
+- 위키북스
+- 지은이: Robert C.Martin (Uncle Bob)
+- 옮긴이: 박재호, 이해영
+
+[##_Image|kage@b9ygf9/btrr9gXuJLT/c0H8kDAQIeYzVNO0yolpn1/img.png|CDM|1.3|{"originWidth":1440,"originHeight":1440,"style":"alignCenter","width":468,"height":468}_##]
+
+---
+
+# 이번 장에서 이야기하고자 하는 것
+
+소프트웨어 경계를 깔끔하게 처리하는 기법과 기교를 설명한다
+
+- 우리가 통제할 수 없는 코드
+  - 외부 모듈, 라이브러리 등등
+    - 이를 학습하기 위해 너무 많은 시간을 쏟지 않는 것이 좋다.
+    - 우리가 통제하지 못하는 상황에 이를 수 있다
+      - ex) 스펙 변경
+- 외부 코드를 사용할 때 어떻게 쉽고 빠르게 사용할 수 있을까?
+  - 문서를 읽는다?
+    - 시간이 오래 걸린다.
+  - 테스트 코드를 작성한다.
+    - 테스트 코드를 작성하며 테스트를 통과시키면서 외부 코드를 익힌다.
+      - 짐 뉴커크는 이를 학습 테스트라고 하였다.
+    - 우리가 사용할 방식대로 외부 API 를 호출하고 API 를 성공시킬 수 있도록 한다.
+      - 사용법을 익히는 것에 초점을 둔다
+    - 테스트가 성공하면 우리가 독자적으로 만든 클래스로 감싸서 사용한다
+- 어떻게 안전하게 사용할 수 있을까?
+  - 우리가 개발한 소스코드와 혼동되지 않도록 한다.
+  - 아는 코드와 모르는 코드의 경계를 두어 해결한다.
+  - 통제가 불가능한 외부 패키지에 의존하는 대신 통제가 가능한 우리의 코드에 의존하는 것이 훨씬 좋다
+
+# 나의 해석과 회고
+
+경계를 만든다는 것은 머릿속에 산발적으로 흩뿌려진 무언가를 잘 정리할 수 있는 도구가 되었다.
+
+나도 개발을 하며 무의식적으로 경계를 만들려고 노력했던 부분들이 있다. 역시 그렇지 않았던 부분들도 존재한다.
+
+여기서 중요한 것은 **내가 경계를 나도 모르는 사이에 체감하고 있더라** 라는 것이다.
+
+예로 HTTP Client 를 이용해서 Open API 를 조회할 때, 외부 라이브러리를 사용할 때, 조금이라도 더 내 입맛에 맞게 만들기 위해 그들을 고립시키려 노력한 포인트들이 있는데 이제는 확실히 그 포인트가 경계의 대상이 된다는 것을 알게 되었다.
+
+이 경계는 비단 외부 라이브러리에 해당되는 말이 아니다.
+
+아래의 코드를 봐보자.
+
+경계가 잘 설정되지 않은 코드이다.
+
+```java
+class Teacher {
+
+  Homework assign() {
+    Homework homework = new Homework();
+    return homework;
+  }
+}
+
+class Student {
+
+  HomeworkResult doHomework(Homework homework) {
+
+    boolean isValid = HomeworkValidator.validate(homework);
+    
+    if (!isValid) {
+      System.out.println("숙제가 이상하다, 안 한다");
+    }
+    System.out.println("숙제를 한다");
+  }
+}
+```
+
+강사는 `assign()` 을 통해서 과제를 출제해준다. 그럼 학생은 해당 과제를 어디선가 받아서 과제가 유효한지 확인하고 과제를 수행한다.
+
+이 코드는 경계가 존재하지 않는다.
+
+여기서 찾을 수 있는 경계는 **강사는 과제를 잘 출제하는 책임**에 선을 그을 수 있다.
+
+반면 경계를 잘 설정해준 코드를 확인해보자.
+
+```java
+class Teacher {
+  Homework assignment() {
+    Homework homework = new Homework();
+    boolean isValid = HomeworkValidator.validate(homework);
+
+    if (isValid) {
+      throw IllegalStateException();
+    }
+
+    return homework;
+  }
+}
+```
+
+강사는 위와 같이 과제를 출제할 때 스스로 과제가 유효한지 확인을 하고 그 책임을 다하고 있음을 알 수 있다.
+
+이렇듯 경계는 객체지향에서 어떤, 뿌리가 될 수 있는 개념이라고 다가왔다.

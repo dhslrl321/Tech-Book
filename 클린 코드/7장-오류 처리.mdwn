@@ -1,0 +1,60 @@
+[개발자 책읽기] 클린 코드-애자일 소프트웨어 장인 정신 (7장 오류 처리)
+
+> 해당 글은 Robert C.Martin **클린 코드** 라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 클린 코드 - 애자일 소프트웨어 장인 정신](http://www.yes24.com/Product/Goods/11681152) 에서 확인해주세요.
+
+#### **클린 코드** - 애자일 소프트웨어 장인 정신 (Uncle Bob)
+
+- 위키북스
+- 지은이: Robert C.Martin (Uncle Bob)
+- 옮긴이: 박재호, 이해영
+
+[##_Image|kage@b9ygf9/btrr9gXuJLT/c0H8kDAQIeYzVNO0yolpn1/img.png|CDM|1.3|{"originWidth":1440,"originHeight":1440,"style":"alignCenter","width":468,"height":468}_##]
+
+---
+
+# 이번 장에서 이야기하고자 하는 것
+
+이번 장에서는 오류 처리 (Exception Handling) 에 대해서 말한다.
+
+#### 애플리케이션에서 오류를 정의할 때 프로그래메에게 가장 중요한 관심사는 **오류를 잡아내는 방법이 되어야 한다**
+
+- 오류 코드보단 예외를 사용하라
+  - 오류 코드를 정의하는 것은 한 번에 한 가지를 하지 않을 확률이 높다.
+  - 오류 코드보단 예외를 통해서 한 번에 한 가지를 할 수 있도록 하자
+- Unckecked Exception 을 사용하라
+  - Checked Exception 은 Compile 시점에 처리할 예외를 handling 할 수 있다는 장점이 있다.
+  - 하지만 Checked Exception 은 OCP 를 위반할 가능성이 높다.
+    - 메서드에서 Checked Exception 을 throw 한다면 이를 사용하는 클라이언트 코드에서는 모두 Checked Exception 을 처리해야 하므로 OCP를 위반한다
+  - `C#`, `C++` 은 Checked Exception 을 지원하지 않는다.
+- 예외에 의미를 제공하라
+  - 예외를 던질 때에는 오류 메시지에 정보를 담을 수 있도록 하자
+  - catch 에서 오류를 기록할 수 있도록 하라
+- 외부 API 를 사용할 때는 Wrapper 를 사용하라
+  - 외부 API 를 이용할 때는 외부 라이브러리와 시스템 사이의 의존성을 줄이기 위해 Wrapper 를 정의하고 Wrapper 에서 그와 관련된 에러를 처리하라
+  - 이렇게 된다면 테스트 코드를 작성할 때도 좋은 영향을 미친다
+- Null 에 대한 고민
+  - Null 을 반환하지 말아라
+    - Null 을 반환한다는 것은 Caller 에게 문제를 떠넘기는 것이다.
+  - Null 을 전달하지 말아라
+    - 어떠한 협력에서 Null 을 전달하지 않는다는 규칙이 없다면 안심하고 처리할 수 없게 된다.
+      - 매번 Null Check 를 하기 때문에
+    - 그렇다면 협력의 메시지는 절대로 Null 이 되지 않는다는 정책을 내부적으로 가지고 있다면 고민해야 할 대상이 적어지게 된다.
+
+#### 깨끗한 코드는 읽기도 좋아야 하지만 안정성도 높아야 한다. 이 둘은 상충하는 목표가 아니다.
+
+# 나의 해석과 회고
+
+이번 챕터에서 가장 흥미로웠던 부분은 바로 **Checked Exception 과 Unckecked Exception** 이 아닐까 싶다.
+
+Checked Exception 과 Unckecked Exception 는 처음 자바를 배웠을 때 다뤘던 내용이고 각각 무엇을 의미하는지 이해만 하고 넘어갔던것 같다.
+
+`Checked Exception 은 Compile 시점에 Exception Handling 을 강제화 한다. 그에 반해 UnChecked Exception 은 Runtime 시점에 발생하므로 Exception 을 적절히 handling 해야 한다.`
+
+정도만 알고 있었는데, 이들 사이에 여러 논쟁이 있었다는 사실을 이번 챕터에서 처음 알게되었다.
+
+이런 상황에서 Checked Exception 이 OCP 에 위배된다는 새로운 사실에 흥미로웠고 덕분에 한번 더 OCP 에 대해서 생각할 수 있었다.
+
+현재도 개발을 하면서 Exception Handling 은 나에게 많이 부족한 능력인것 같다.
+
+1. Runtime Exception 이 발생할 수 있는 상황이라는 것을 인지하지 못함
+2. Exception 이 발생할 여지가 있는 상황에서 Exception Handling 을 어디서 다뤄야할지 모름
