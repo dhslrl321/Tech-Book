@@ -2,7 +2,7 @@
 
 > 해당 글은 Robert C.Martin **클린 아키텍처** 라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 클린 아키텍처 - 소프트웨어 구조와 설계의 원칙](http://www.yes24.com/Product/Goods/11681152) 에서 확인해주세요.
 
-#### **클린 아키텍처** - 소프트웨어 구조와 설계의 원칙 (Uncle Bob)
+#### **클린 아키텍처** - 소프트웨어 구조와 설계의 원칙 (Robert C. Martin)
 
 - 위키북스
 - 지은이: Robert C.Martin (Uncle Bob)
