@@ -1,0 +1,21 @@
+[개발자 책읽기] 클린 아키텍처-소프트웨어 구조와 설계의 원칙 (n장 제목)
+
+> 해당 글은 Robert C.Martin **클린 아키텍처** 라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 클린 아키텍처 - 소프트웨어 구조와 설계의 원칙](http://www.yes24.com/Product/Goods/11681152) 에서 확인해주세요.
+
+#### **클린 아키텍처** - 소프트웨어 구조와 설계의 원칙 (Robert C. Martin)
+
+- 위키북스
+- 지은이: Robert C.Martin (Uncle Bob)
+- 옮긴이: 송준이
+
+[##_Image|kage@cK8Zuq/btryV2cc4hw/4kmJPaN0AkHby75H6BhbQ0/img.png|CDM|1.3|{"originWidth":747,"originHeight":875,"style":"alignCenter","width":446,"height":522}_##]
+
+---
+
+# 이번 장에서 이야기하고자 하는 것
+
+- 좋은 소프트웨어 설계의 목표는
+  - 필요한 시스템을 만들고 유지보수하는 데 투입되는 인력을 최소화함에 있다
+  - 즉, 나쁜 설계로 구성된 소프트웨어는 새로운 기능 출시마다 비용이 증가한다
+
+# 나의 해석과 회고
