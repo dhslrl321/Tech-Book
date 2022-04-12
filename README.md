@@ -71,3 +71,30 @@
 - 클린 아키텍처 - (로버트 C. 마틴) - [블로그 포스팅 바로가기](#)
 
 <br />
+
+---
+
+# VPC
+
+- 기본 세팅하기 vpc
+  - private-public 통신이 잘 되는지 PoC 하기
+- tptp-private
+  - xxx.tptp.net
+  - rds 생성
+- tptp-public
+  - xxx.tptp.com
+- 배포 파이프라인까지 만들기
+  - 금요일에 했던 react-springboot 함께 말아서 올리기
+- cloud-flare
+  - 계정 통일하기
+
+# Spring boot Rest API
+
+- spring security jwt
+
+# Public
+
+- tptp-frontend
+  - node
+- tptp-private
+  - spring boot
