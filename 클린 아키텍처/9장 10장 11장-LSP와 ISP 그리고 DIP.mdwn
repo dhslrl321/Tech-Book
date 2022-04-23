@@ -1,0 +1,120 @@
+[개발자 책읽기] 클린 아키텍처-소프트웨어 구조와 설계의 원칙 (9장 10장 11장 LSP 와 ISP 그리고 DIP)
+
+> 해당 글은 Robert C.Martin **클린 아키텍처** 라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 클린 아키텍처 - 소프트웨어 구조와 설계의 원칙](http://www.yes24.com/Product/Goods/11681152) 에서 확인해주세요.
+
+#### **클린 아키텍처** - 소프트웨어 구조와 설계의 원칙 (Robert C. Martin)
+
+- 위키북스
+- 지은이: Robert C.Martin (Uncle Bob)
+- 옮긴이: 송준이
+
+[##_Image|kage@cK8Zuq/btryV2cc4hw/4kmJPaN0AkHby75H6BhbQ0/img.png|CDM|1.3|{"originWidth":747,"originHeight":875,"style":"alignCenter","width":446,"height":522}_##]
+
+---
+
+# 이번 장에서 이야기하고자 하는 것
+
+## LSP
+
+- 다음과 같은 치환 원칙이 적용된다면 LSP 를 만족한다
+  - A 를 구현하는(상속하는) 서브 타입 B와 C 가 있다면 B 타입에 모두 C 타입으로 변경하더라도 행위가 변하지 않는다.
+- LSP 는 아키텍처 수준까지 확장할 수 있고 반드시 확장해야 한다.
+  - 치환 가능성을 위배한다면 상당량의 추가 구현사항이 등장하기 때문이다.
+
+## ISP
+
+- 변경에 유리하게 대처하기 위해서는 정말로 알아야 할 정보만 알아야 한다
+- 필요 이상으로 많은 것을 포함하는 모듈에 의존하는 것은 해로운 일이다.
+- 무언가에 의존한다는 것은 예상치도 못한 일을 불러일으킬 수 있다.
+  - 그러므로 의존을 최소화해야 한다는 교훈을 ISP 에서 느낄 수 있따.
+
+## DIP
+
+- 유연성이 극대화된 시스템
+  - 소스 코드 의존성이 추상에 의존하며 구체에는 의존하지 않는 시스템
+    - It depends on abstraction, not a concretion
+- 현실적으로 DIP 는 규칙이 되기 힘듦
+  - `String.class` 와 같은 구체 클래스에 대한 의존성은 벗어날 수 없고 벗어나서는 안되기 때문에
+- Abstraction 은 Concretion 보다 변경 가능성이 더 낮기 때문이다.
+- DIP 를 위한 몇가지 실천법이 존재한다.
+  - 변동성이 큰 Concrete Class 를 참조하지 말아라
+  - 변동성이 큰 Concrete Class 로부터 파생하지 말아라
+  - Concrete Class 를 Override 하지 말아라
+  - 구체적이며 변동성이 크다면 절대로 그 이름을 언급하지 말아라
+
+# 나의 해석과 회고
+
+이번에는 내 생각에 대한 회고가 아니라 각각의 원칙에 대해서 한번 정리해보려 한다.
+
+## LSP
+
+```java
+interface Car {}
+
+class Bmw implements Car {}
+
+class Audi implements Car {}
+
+class Main {
+  public static void main(String[] args) {
+    Car car = new Bmw();
+    Car car2 = new Audi();
+
+    car = new Audi();
+    car2 = new Bmw();
+  }
+}
+```
+
+과 같이 되었을 때 `car` 과 `car2` 의 행위에 대한 결과가 동일하다면 이는 LSP 가 만족하는 것이다.
+
+## ISP
+
+```java
+interface Rule {}
+
+interface UserRule extends Rule {}
+
+interface AdminRule extends Rule {}
+
+class UserRuleSet implements UserRule {}
+class AdminRuleSet implements AdminRule {}
+```
+
+과 같이 되었을 때, `UserRuleSet` 이나 `AdminRuleSet` 은 Rule 에 직접적으로 의존하지 않기 때문에, 정말 필요한 정보만 사용하기 때문에 ISP 가 만족된다고 할 수 있다.
+
+하지만 여기서 주의해야 할 점이 Rule 을 무조건 나눈다고 해서 ISP 를 만족하는 것은 아니다.
+
+`Rule` 이라는 인터페이스가 필요 이상으로 많은 정보를 가졌고, 그들을 적절히 UserRule 과 AdminRule 이 소유하고 분리할 때만 적용되는 말이다
+
+## DIP
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    List<String> strings = new ArrayList<>();
+    ArrayList<String> strings2 = new ArrayList<>();
+  }
+}
+```
+
+위의 코드에서 `string2` 는 표면적으로는 DIP 를 위배한다.
+
+ArrayList 는 Concrete 이며 직접적으로 Concrete 를 의존하기 때문이다.
+
+하지만 DIP 를 잘 이해했다면 위의 코드는 모두 문제가 없다.
+
+그럼 다음은 어떨까?
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    Car car1 = new Bmw<>();
+    Audi car2 = new Audi<>();
+  }
+}
+```
+
+위의 코드는 DIP 를 위배할 것 같은데 과연 정말 위배할까?
+
+답은 상황에 따라 다르다는 것이다.
