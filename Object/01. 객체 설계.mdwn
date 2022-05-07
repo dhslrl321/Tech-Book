@@ -1,0 +1,15 @@
+> 해당 글은 조영호님의 **오브젝트**라는 책을 읽고 학습한 내용을 정리 및 회고하는 글 입니다. 자세한 사항은 [YES 24 오브젝트](http://www.yes24.com/Product/Goods/74219491) 에서 확인해주세요.
+
+#### 오브젝트 - 코드로 이해하는 객체지향 설계 (조영호)
+
+- 위키북스
+- 펴낸이: 박찬규, 엮은이: 이대엽, 디자인: 북누리
+- 1쇄 발행: 2019.06.17
+
+[##_Image|kage@bkciKd/btq1uvLDyNC/lZHQk3iRPuKK3gh5NBG3G0/img.png|CDM|1.3|{"originWidth":1292,"originHeight":1730,"style":"alignCenter","mobileStyle":"widthContent","width":360,"height":null,"caption":"출처 : YES24 오브젝트"}_##]
+
+---
+
+# 이번 장에서 이야기하는 것
+
+# 나의 해석과 회고

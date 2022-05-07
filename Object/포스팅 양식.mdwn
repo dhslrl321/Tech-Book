@@ -6,14 +6,10 @@
 - 펴낸이: 박찬규, 엮은이: 이대엽, 디자인: 북누리
 - 1쇄 발행: 2019.06.17
 
-[##_Image|kage@bkciKd/btq1uvLDyNC/lZHQk3iRPuKK3gh5NBG3G0/img.png|alignCenter|data-origin-width="0" data-origin-height="0" width="360" height="NaN" data-ke-mobilestyle="widthContent"|출처 : YES24 오브젝트||_##]
+[##_Image|kage@bkciKd/btq1uvLDyNC/lZHQk3iRPuKK3gh5NBG3G0/img.png|CDM|1.3|{"originWidth":1292,"originHeight":1730,"style":"alignCenter","mobileStyle":"widthContent","width":360,"height":null,"caption":"출처 : YES24 오브젝트"}_##]
 
-# 이번 장에서 이야기하고자 하는 것
+---
 
-# 순서
+# 이번 장에서 이야기하는 것
 
-# 주제
-
-# 내용
-
-# 회고
+# 나의 해석과 회고
