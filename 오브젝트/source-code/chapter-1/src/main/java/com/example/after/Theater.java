@@ -1,6 +1,4 @@
-package com.example;
-
-import javax.swing.plaf.basic.BasicGraphicsUtils;
+package com.example.after;
 
 public class Theater {
     private TicketSeller ticketSeller;

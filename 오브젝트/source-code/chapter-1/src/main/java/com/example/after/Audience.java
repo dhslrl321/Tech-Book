@@ -1,4 +1,4 @@
-package com.example;
+package com.example.after;
 
 public class Audience {
     private Bag bag;

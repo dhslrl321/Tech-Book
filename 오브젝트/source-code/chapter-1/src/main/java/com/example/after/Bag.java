@@ -1,4 +1,4 @@
-package com.example;
+package com.example.after;
 
 public class Bag {
     private Long amount;

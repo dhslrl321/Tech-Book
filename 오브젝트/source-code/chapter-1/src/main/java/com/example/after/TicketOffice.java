@@ -1,13 +1,12 @@
-package com.example;
+package com.example.after;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TicketOffice {
     private Long amount;
-    private List<Ticket> tickets = new ArrayList<>();
+    private final List<Ticket> tickets = new ArrayList<>();
 
     public TicketOffice(Long amount, Ticket ...tickets) {
         this.amount = amount;
