@@ -1,4 +1,5 @@
 rootProject.name = 'book-object'
 
 include 'chapter-1'
+include 'chapter-2'
 
