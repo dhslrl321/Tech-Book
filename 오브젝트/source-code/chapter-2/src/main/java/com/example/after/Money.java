@@ -12,7 +12,7 @@ public class Money {
         this.amount = amount;
     }
 
-    private static Money wons(long amount) {
+    public static Money wons(long amount) {
         return new Money(BigDecimal.valueOf(amount));
     }
 
