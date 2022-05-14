@@ -1,5 +1,6 @@
-package com.example.after;
+package com.example.after.condition;
 
+import com.example.after.domain.Screening;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 

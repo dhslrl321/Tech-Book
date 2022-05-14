@@ -1,4 +1,4 @@
-package com.example.after;
+package com.example.after.domain;
 
 public class Reservation {
 

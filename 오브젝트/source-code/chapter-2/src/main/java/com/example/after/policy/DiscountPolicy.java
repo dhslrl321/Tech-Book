@@ -1,9 +1,10 @@
-package com.example.after;
+package com.example.after.policy;
 
-import java.util.ArrayList;
+import com.example.after.domain.Money;
+import com.example.after.domain.Screening;
+import com.example.after.condition.DiscountCondition;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
 
 public abstract class DiscountPolicy {
 

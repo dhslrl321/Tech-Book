@@ -1,4 +1,6 @@
-package com.example.after;
+package com.example.after.condition;
+
+import com.example.after.domain.Screening;
 
 public class SequenceCondition implements DiscountCondition {
 

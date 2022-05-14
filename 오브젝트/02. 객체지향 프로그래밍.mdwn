@@ -1,0 +1,7 @@
+- 1/10 ~ 5/10 : 4 개월
+- 업무
+  - Notification 시스템 개발
+  - Refund 시스템 개발
+  - Membership Terminator 개발
+  - Trevari Infra 에 대한 PoC
+  - 주기적으로 발생하는 AWS 보안 문제 해결 (2회)

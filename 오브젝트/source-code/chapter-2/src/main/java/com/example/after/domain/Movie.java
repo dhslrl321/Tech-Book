@@ -1,7 +1,7 @@
-package com.example.after;
+package com.example.after.domain;
 
+import com.example.after.policy.DiscountPolicy;
 import java.time.Duration;
-import javax.management.Query;
 
 public class Movie {
     private String title;

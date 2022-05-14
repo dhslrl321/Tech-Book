@@ -1,5 +1,11 @@
 package com.example.after;
 
+import com.example.after.condition.PeriodCondition;
+import com.example.after.condition.SequenceCondition;
+import com.example.after.domain.Money;
+import com.example.after.domain.Movie;
+import com.example.after.policy.AmountDiscountPolicy;
+import com.example.after.policy.PercentDiscountPolicy;
 import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalTime;
