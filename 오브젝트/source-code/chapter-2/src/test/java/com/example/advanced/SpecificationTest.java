@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class SpecificationTest {
 
     Specification<Factor> ageSpec = factor -> factor.getAge() > 19;
-    Specification nameSpec = factor -> factor.getName().startsWith("장");
+    Specification<Factor> nameSpec = factor -> factor.getName().startsWith("장");
 
     @BeforeEach
     void setUp() {

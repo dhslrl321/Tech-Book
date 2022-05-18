@@ -1,7 +1,17 @@
-- 1/10 ~ 5/10 : 4 개월
-- 업무
-  - Notification 시스템 개발
-  - Refund 시스템 개발
-  - Membership Terminator 개발
-  - Trevari Infra 에 대한 PoC
-  - 주기적으로 발생하는 AWS 보안 문제 해결 (2회)
+새로운 어드민에서 멤버십과 티켓을 조회할 수 있다
+
+- user 조회 기능
+- 검색 key
+  - userid
+  - username
+  - phone
+
+# 차이
+
+- operator
+- function
+  - 부수효과가 없는 xx
+- method
+  - 부수효과가 있는, xx
+  - 부수효과 : 상태 변경
+- message
