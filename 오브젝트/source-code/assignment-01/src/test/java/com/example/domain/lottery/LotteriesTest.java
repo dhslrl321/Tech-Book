@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
-import com.example.domain.compensation.WinningNumber;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,7 +27,7 @@ class LotteriesTest {
 
     @Test
     void 갯수만큼_생성된다() {
-        assertThat(sut.size()).isEqualTo(1);
+        assertThat(sut.size()).isEqualTo(2);
     }
 
     @Test

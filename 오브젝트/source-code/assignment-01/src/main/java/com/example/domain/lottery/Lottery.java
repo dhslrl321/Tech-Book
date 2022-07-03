@@ -15,4 +15,9 @@ public class Lottery {
     public int hit(Numbers provided) {
         return numbers.compare(provided);
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }

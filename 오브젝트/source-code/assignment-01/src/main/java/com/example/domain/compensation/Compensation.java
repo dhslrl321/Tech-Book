@@ -4,18 +4,18 @@ import com.example.domain.value.Price;
 
 public class Compensation {
 
-    private final Price price;
+    private final Price rewardPrice;
     private final int baseCount;
     private final int actualCount;
 
-    private Compensation(Price price, int baseCount, int actualCount) {
-        this.price = price;
+    private Compensation(Price rewardPrice, int baseCount, int actualCount) {
+        this.rewardPrice = rewardPrice;
         this.baseCount = baseCount;
         this.actualCount = actualCount;
     }
 
-    public static Compensation of(Price price, int baseCount, int actualCount) {
-        return new Compensation(price, baseCount, actualCount);
+    public static Compensation of(Price rewardPrice, int baseCount, int actualCount) {
+        return new Compensation(rewardPrice, baseCount, actualCount);
     }
 
     public int getActualCount() {
@@ -23,7 +23,7 @@ public class Compensation {
     }
 
     public Price getRewardPrice() {
-        return price;
+        return rewardPrice;
     }
 
     public int getBaseCount() {

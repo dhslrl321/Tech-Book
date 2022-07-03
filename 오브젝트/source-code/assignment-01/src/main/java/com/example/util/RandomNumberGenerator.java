@@ -16,7 +16,6 @@ public class RandomNumberGenerator {
     }
 
     private int[] getIntegers(int count) {
-
         int[] integers = new int[count];
         for (int i = 0; i < count; i++) {
             int randomNumber = getRandomNumber();

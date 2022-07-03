@@ -29,6 +29,11 @@ public class Numbers {
         return integers[i];
     }
 
+    @Override
+    public String toString() {
+        return Arrays.toString(integers);
+    }
+
     private boolean isSameNumber(Numbers answer, int i) {
         return Arrays.binarySearch(answer.integers, i) >= 0;
     }

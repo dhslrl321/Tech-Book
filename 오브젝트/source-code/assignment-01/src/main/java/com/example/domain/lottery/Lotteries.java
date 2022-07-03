@@ -1,7 +1,7 @@
 package com.example.domain.lottery;
 
-import com.example.domain.compensation.WinningNumber;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Lotteries {
@@ -28,5 +28,13 @@ public class Lotteries {
         }
 
         return hits;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Lottery lottery : lotteries) {
+            sb.append(lottery.toString() + "\n");
+        }
+        return sb.toString();
     }
 }

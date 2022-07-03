@@ -22,17 +22,25 @@ public class CompensationRuleSet {
 
     public void counting(List<Integer> hits) {
         for (CompensationRule rule : rules) {
-            for (Integer hit : hits) {
-                if (rule.isSatisfiedBy(hit)) {
-                    rule.plusActualCount();
-                }
-            }
+            updateActualCount(hits, rule);
         }
     }
 
-    public List<Compensation> toCompensations() {
-        return rules.stream()
+    public Compensations toCompensations() {
+        return Compensations.from(rules.stream()
                 .map(CompensationRule::toCompensation)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
+    }
+
+    private void updateActualCount(List<Integer> hits, CompensationRule rule) {
+        for (Integer hit : hits) {
+            plusBestRule(rule, hit);
+        }
+    }
+
+    private void plusBestRule(CompensationRule rule, Integer hit) {
+        if (rule.isSatisfiedBy(hit)) {
+            rule.plusActualCount();
+        }
     }
 }

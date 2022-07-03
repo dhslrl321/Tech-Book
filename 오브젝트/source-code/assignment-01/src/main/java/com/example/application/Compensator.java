@@ -1,6 +1,9 @@
-package com.example.domain.compensation;
+package com.example.application;
 
+import com.example.domain.compensation.CompensationRuleSet;
+import com.example.domain.compensation.Compensations;
 import com.example.domain.lottery.Lotteries;
+import com.example.domain.lottery.WinningNumber;
 import java.util.List;
 
 public class Compensator {
@@ -8,7 +11,7 @@ public class Compensator {
     private final WinningNumber winningNumber;
     private final CompensationRuleSet ruleSet;
 
-    public Compensator(WinningNumber winningNumber, CompensationRuleSet ruleSet) {
+    private Compensator(WinningNumber winningNumber, CompensationRuleSet ruleSet) {
         this.winningNumber = winningNumber;
         this.ruleSet = ruleSet;
     }
@@ -17,9 +20,9 @@ public class Compensator {
         return new Compensator(winningNumber, ruleSet);
     }
 
-    public List<Compensation> compensate(Lotteries lotteries) {
+    public Compensations compensate(Lotteries lotteries) {
         List<Integer> hits = lotteries.getComparedHits(winningNumber);
         ruleSet.counting(hits);
-        return null;
+        return ruleSet.toCompensations();
     }
 }

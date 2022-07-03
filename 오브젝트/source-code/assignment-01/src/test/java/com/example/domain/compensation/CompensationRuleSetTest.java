@@ -45,8 +45,8 @@ class CompensationRuleSetTest {
 
     @Test
     void 룰을_보상으로_변환한다() {
-        List<Compensation> actual = sut.toCompensations();
-        
+        Compensations actual = sut.toCompensations();
+
         assertThat(actual.size()).isEqualTo(3);
     }
 

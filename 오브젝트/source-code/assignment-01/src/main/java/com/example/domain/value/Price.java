@@ -11,6 +11,11 @@ public class Price {
         return new Price(value);
     }
 
+    public Price plus(Price price) {
+
+        return Price.of(price.value + value);
+    }
+
     public long get() {
         return value;
     }
