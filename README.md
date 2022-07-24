@@ -16,6 +16,7 @@
 10. 소프트웨어 개발의 본질
 11. 오브젝트
 12. 도메인 주도 개발 시작하기
+13. CQRS Journey
 
 <br />
 
@@ -90,6 +91,12 @@
 ## 📌 도메인 주도 개발 시작하기
 
 - 도메인 주도 개발 시작하기 (DDD 핵심 개념 정리부터 구현까지) - (최범균) - [블로그 포스팅 바로가기](#)
+
+<br />
+
+## 📌 CQRS Journey
+
+- CQRS Journey - (Microsoft) - [한글 번역 repo 바로가기](https://github.com/dhslrl321/cqrs-journey-korean-ver)
 
 <br />
 
