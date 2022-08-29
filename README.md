@@ -17,6 +17,7 @@
 11. 오브젝트
 12. 도메인 주도 개발 시작하기
 13. CQRS Journey
+14. Building Event-Driven Microservices
 
 <br />
 
@@ -97,6 +98,12 @@
 ## 📌 CQRS Journey
 
 - CQRS Journey - (Microsoft) - [한글 번역 repo 바로가기](https://github.com/dhslrl321/cqrs-journey-korean-ver)
+
+<br />
+
+## 📌 Building Event-Driven Microservices, 이벤트 기반 마이크로서비스 구축
+
+- Building Event-Driven Microservices - (에덤 벨메어) - [한글 번역 repo 바로가기](https://github.com/dhslrl321/cqrs-journey-korean-ver)
 
 <br />
 
