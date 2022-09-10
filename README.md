@@ -103,7 +103,7 @@
 
 ## 📌 Building Event-Driven Microservices, 이벤트 기반 마이크로서비스 구축
 
-- Building Event-Driven Microservices - (에덤 벨메어) - [한글 번역 repo 바로가기](https://github.com/dhslrl321/cqrs-journey-korean-ver)
+- Building Event-Driven Microservices - (에덤 벨메어) - [한글 번역 repo 바로가기](https://github.com/dhslrl321/Tech-Book/tree/master/이벤트%20기반%20마이크로서비스%20구축)
 
 <br />
 
