@@ -18,8 +18,10 @@
 12. **도메인 주도 개발 시작하기, DDD 핵심 개념 정리부터 구현까지** - 최범균
 13. **CQRS Journey** - microsoft
 14. **Building Event-Driven Microservices** - 에덤 벨메어
-15. **Effective Unit testing** - 라쎄 코스켈라
-16. **적정 소프트웨어 아키텍처, 리스크 주도 접근법** - 조지 페어뱅크스
+15. **Effective Unit Testing** - 라쎄 코스켈라
+16. **Effective Java** - 조슈아 블로크
+17. **적정 소프트웨어 아키텍처, 리스크 주도 접근법** - 조지 페어뱅크스
+18. **자바 성능 튜닝 이야기** - 이상민
 
 <br />
 
