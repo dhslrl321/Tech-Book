@@ -1,5 +1,7 @@
 [개발자 책읽기] - 상자 밖에 있는 사람, 아빈저 연구소
 
+[##_Image|kage@Sr4Z7/btskhbarmo1/kYeHhYqdQ8GgSfgT4Kw8eK/img.png|CDM|1.3|{"originWidth":1440,"originHeight":1440,"style":"alignCenter","width":523,"height":523}_##]
+
 # 책에 대한 간단한 요약
 
 - **이 책은 문제의 원인을 외부로부터가 아닌 나로부터 시작한다는 것을 인지할 수 있게 한다**
