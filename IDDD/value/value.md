@@ -10,3 +10,16 @@
   - 불변셩이 유지될 수 있다.
   - 다른 값과 value equality(등가성) 를 통해 비교할 수 있다
   - 협력자에게 side-effect-free behavior 를 제공한다
+
+## 개념적 전체
+
+- 값 객체는 하나 이상의 개별적 특성을 속성으로 가질 수 있음
+  - 이들은 모두 연관되어있어야 함
+
+```java
+// 5,000,000₩ 개념적 하나
+class Money {
+  long value; // 5,000,000
+  String currency; // 원, 달러
+}
+```
