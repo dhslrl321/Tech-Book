@@ -34,3 +34,4 @@
 4. **Real MySQL 8.0, 개발자와 DBA를 위한 MySQL 실전 가이드** - 백은성, 이성욱
 5. **상자 밖에 있는 사람** - 아빈저 연구소 ✅
 6. **Five lines of code** - 크리스찬 클라우젠
+7. **Effective Kotlin** - 마르친 모스칼라
