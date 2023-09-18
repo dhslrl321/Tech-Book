@@ -35,3 +35,4 @@
 5. **블록체인이란 무엇인가** - 다니엘 드레서 ✅
 6. **Five lines of code** - 크리스찬 클라우젠
 7. **Effective Kotlin, best practices** - 마르친 모스칼라
+8. **Real MySQL 1** - 
